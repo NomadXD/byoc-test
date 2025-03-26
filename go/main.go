@@ -33,7 +33,7 @@ func main() {
 	}
 
 	mux1 := http.NewServeMux()
-	mux1.HandleFunc("/", ping)
+	mux1.HandleFunc("/", ping123)
 	mux1.HandleFunc("/hello", hello)
 	mux1.HandleFunc("/healthz", healthz)
 	mux1.HandleFunc("/proxy", proxy)
@@ -124,6 +124,12 @@ func ping(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	fmt.Fprintf(w, "{\"active\": true}")
+}
+
+func ping123(w http.ResponseWriter, req *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	fmt.Fprintf(w, "{\"active 123\": true}")
 }
 
 func healthz(w http.ResponseWriter, req *http.Request) {
